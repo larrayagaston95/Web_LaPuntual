@@ -21,8 +21,9 @@
 
 /* Slider / Portada Principal */
 .hero-slider {
-    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
-                url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Dekton-slider.jpg'); /* Usamos tu fondo de partículas */
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Dekton-slider.jpg');
+    /* Usamos tu fondo de partículas */
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -54,8 +55,10 @@
 
 
 /* Altura general y comportamiento del Slider */
-.carousel, .carousel-item {
-    height: 85vh; /* Ocupa el 85% de la altura de la pantalla */
+.carousel,
+.carousel-item {
+    height: 85vh;
+    /* Ocupa el 85% de la altura de la pantalla */
 }
 
 /* Configuramos los fondos individuales levantando los recursos reales de tu web */
@@ -83,8 +86,10 @@
 }
 
 /* Ajuste visual para las flechas de Bootstrap para que se noten */
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    filter: invert(1); /* Cambia las flechas nativas a color negro/oscuro si es necesario */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+    /* Cambia las flechas nativas a color negro/oscuro si es necesario */
 }
 
 
@@ -92,6 +97,7 @@
 .img-mosaico {
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
 .position-relative:hover .img-mosaico {
     transform: scale(1.05);
 }
@@ -105,8 +111,8 @@
 .reveal-scroll {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
 }
 
@@ -114,5 +120,103 @@
 .reveal-scroll.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ==========================================================================
+   ESTILOS PERSONALIZADOS PARA LOS SUBMENÚS (DROPDOWNS)
+   ========================================================================== */
+
+/* Cambia el color de fondo flotante cuando pasas el mouse por las opciones del submenú */
+.main-nav .dropdown-item:hover {
+    background-color: #dc3545 !important;
+    /* El color rojo danger para hacer juego */
+    color: #ffffff !important;
+    transition: background-color 0.2s ease;
+}
+
+/* Alinea correctamente el menú en pantallas grandes y añade una transición limpia */
+@media (min-width: 992px) {
+    .main-nav .dropdown-menu {
+        margin-top: 10px !important;
+        border-radius: 4px;
+    }
+}
+
+/* ==========================================================================
+   DESPLIEGUE DE SUBMENÚS AL PASAR EL MOUSE (HOVER CORREGIDO SIN SALTOS)
+   ========================================================================== */
+@media (min-width: 992px) {
+
+    /* Al pasar el mouse por el ítem, activamos el submenú */
+    .main-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        /* Lo subimos un poquito para que encaje perfecto y no deje huecos */
+        top: 90%;
+        animation: entradaDropdown 0.2s ease-out;
+    }
+
+    /* Configuración base del contenedor flotante */
+    .main-nav .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        /* Posición inicial un cachito más arriba para el enganche fluido */
+        top: 100%;
+        margin-top: 0 !important;
+        /* Eliminamos el margen de Bootstrap que causa el salto */
+        transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, top 0.15s ease-in-out;
+
+        /* El "Puente Mágico": Un borde superior invisible de 10px. 
+           Esto hace que aunque veas el menú un poquito más separado en diseño, 
+           para el mouse sigue habiendo superficie física y NUNCA se va a cerrar solo. */
+        border-top: 10px solid transparent !important;
+    }
+}
+
+/* Animación de deslizamiento milimétrico corregida */
+@keyframes entradaDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Animación sutil para que el menú caiga suavemente en lugar de aparecer en seco */
+@keyframes entradaDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   CORRECCIÓN DE COLOR SELECCIONADO EN EL DROPDOWN (QUITA EL FONDO BLANCO)
+   ========================================================================== */
+
+/* Evita que el botón principal se ponga blanco al hacer clic o abrirse */
+.main-nav .nav-item.dropdown .nav-link:focus,
+.main-nav .nav-item.dropdown .nav-link.show,
+.main-nav .nav-item.dropdown:hover .nav-link {
+    background-color: transparent !important; /* Mantiene el fondo oscuro de la barra */
+    color: #dc3545 !important;                /* Pinta la palabra de rojo para notar la selección */
+}
+
+/* Por si Bootstrap le mete fondo blanco a los enlaces de adentro del submenú al hacer foco */
+.main-nav .dropdown-menu .dropdown-item:focus {
+    background-color: #dc3545 !important; /* Si se selecciona con teclado o clic, que use tu rojo */
+    color: #ffffff !important;
 }
 

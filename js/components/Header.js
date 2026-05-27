@@ -35,11 +35,57 @@ export const Header = {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto fw-bold text-uppercase" style="font-size: 0.9rem; letter-spacing: 1px;">
-                            <li class="nav-item"><a class="nav-link active text-danger" href="#">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#catalogo-seccion">MATERIALES</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">BACHAS</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">TU MESADA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">CONTACTO</a></li>
+                            
+                            <!-- HOME -->
+                            <li class="nav-item">
+                                <a class="nav-link active text-danger" href="#">HOME</a>
+                            </li>
+                            
+                            <!-- MATERIALES SUBMENÚ -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMateriales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    MATERIALES
+                                </a>
+                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownMateriales">
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">DEKTON</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">SILESTONE</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">NEOLITH</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">PURESTONE</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">MARMOTECH</a></li>
+                                    <li><hr class="dropdown-divider border-secondary"></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">PIEDRAS NATURALES</a></li>
+                                </ul>
+                            </li>
+                            
+                            <!-- BACHAS SUBMENÚ -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBachas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    BACHAS
+                                </a>
+                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownBachas">
+                                    <li><a class="dropdown-item text-white small py-2" href="#">LINEA JOHNSON</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#">ARMADAS</a></li>
+                                </ul>
+                            </li>
+                            
+                            <!-- TU MESADA -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">TU MESADA</a>
+                            </li>
+                            
+                            <!-- LA PUNTUAL SUBMENÚ (Reemplazando a Contacto) -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLaPuntual" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    LA PUNTUAL
+                                </a>
+                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownLaPuntual">
+                                    <li><a class="dropdown-item text-white small py-2" href="#">NOSOTROS</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#">TRABAJOS REALIZADOS</a></li>
+                                    <li><hr class="dropdown-divider border-secondary"></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="#">CONTACTO</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
