@@ -1,0 +1,64 @@
+/* css/components.css */
+
+/* COMPONENTE: TARJETAS DEL CATÁLOGO (Cards) */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza el movimiento al pasar el mouse */
+    border-radius: 12px;                                  /* Redondea las esquinas */
+    overflow: hidden;                                     /* Evita que las fotos se salgan del borde redondeado */
+}
+
+/* Efecto levante en la tarjeta */
+.card:hover {
+    transform: translateY(-5px);                     /* Eleva la tarjeta 5 píxeles */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important; /* Genera la sombra de flotación */
+}
+
+/* TITULOS EN ITÁLICA ADENTRO DEL SLIDER: 
+   Ej: "DEKTON", "SILESTONE" en grande. */
+/* components.css */
+
+/* TITULOS EN ITÁLICA ADENTRO DEL SLIDER */
+.italic-title {
+    font-style: italic;     /* Aplica la inclinación de la letra */
+    font-size: 5rem;         /* Letra gigante de alto impacto */
+    letter-spacing: 4px;     /* Separación estilizada entre caracteres */
+    color: #000000 !important; /* Negro puro para contraste total */
+    
+    /* SOMBRA REFORZADA: 
+       Aumentamos el difuminado a 8px y subimos la opacidad al 75% (0.75) 
+       para que el destello blanco por detrás se note de verdad */
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.75), 
+                 0 2px 6px rgba(255, 255, 255, 0.6);
+}
+
+
+/* TEXTOS DESCRIPTIVOS ADENTRO DEL SLIDER */
+.hero-content p {
+    letter-spacing: var(--tracking-wide); /* Aplica los 2px de separación definidos en las variables */
+    
+    /* MEJORA DE VISUALIZACIÓN: */
+    font-weight: 600;                     /* Subimos el grosor a semi-bold fuerte para que la letra tenga más cuerpo */
+    color: #111111 !important;            /* Forzamos un negro carbón bien intenso que contrasta excelente */
+    font-size: 1.25rem;                   /* Le damos un puntito más de tamaño si es necesario para que no quede tímido */
+    
+    /* SOMBRA DE RESPALDO (Opcional):
+       Al igual que al título, le agregamos un sutil reflejo blanco por detrás.
+       Si la foto del banner tiene partes oscuras y partes claras, este truco hace 
+       que el texto se lea perfecto en cualquier zona de la imagen. */
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5); 
+}
+
+
+/* BOTÓN CONTACTARSE: 
+   Estilo personalizado de color rojo puro. */
+.btn-danger {
+    background-color: #ff0000; /* Fondo rojo */
+    border: none;              /* Quita el borde nativo de Bootstrap */
+    letter-spacing: 1px;       /* Le da aire al texto del botón */
+    font-size: 0.9rem;
+}
+
+/* FLECHAS DE CONTROL DEL SLIDER */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1); /* Invierte el color de las flechas nativas (pasan de blanco a negro) para que se noten sobre fondos claros */
+}

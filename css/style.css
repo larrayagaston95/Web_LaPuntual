@@ -1,0 +1,118 @@
+/* css/style.css */
+
+/* ==========================================================================
+   MAIN ORQUESTADOR DE STILOS (CSS Entry Point)
+   ========================================================================== */
+
+/* 1. Cargamos la base global (Variables y colores del Body) */
+@import url('base.css');
+
+/* 2. Cargamos las estructuras del diseño (Navbar flotante y Slider) */
+@import url('layout.css');
+
+/* 3. Cargamos los detalles de los componentes (Tarjetas y Botones) */
+@import url('components.css');
+
+.navbar-brand .tracking-wide {
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* Slider / Portada Principal */
+.hero-slider {
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
+                url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Dekton-slider.jpg'); /* Usamos tu fondo de partículas */
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    position: relative;
+}
+
+.hero-content h1 {
+    letter-spacing: 5px;
+    font-size: 4.5rem;
+}
+
+.hero-content p {
+    letter-spacing: var(--tracking-wide);
+    font-weight: 500;
+}
+
+/* Botón Contactarse estilo original */
+.btn-danger {
+    background-color: #ff0000;
+    border: none;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Espaciado extra para que el catálogo no se encime */
+#catalogo-seccion {
+    margin-top: 40px;
+}
+
+
+/* Altura general y comportamiento del Slider */
+.carousel, .carousel-item {
+    height: 85vh; /* Ocupa el 85% de la altura de la pantalla */
+}
+
+/* Configuramos los fondos individuales levantando los recursos reales de tu web */
+.slide-dekton {
+    background: url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Dekton-slider.jpg') center/cover no-repeat;
+}
+
+.slide-silestone {
+    background: url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Silestone-slider.jpg') center/cover no-repeat;
+}
+
+.slide-neolith {
+    background: url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Neolith-slider.jpg') center/cover no-repeat;
+}
+
+.slide-marmotech {
+    background: url('https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Marmotech-slider.jpg') center/cover no-repeat;
+}
+
+/* Estilo exacto para las letras grandes del Slider */
+.italic-title {
+    font-style: italic;
+    font-size: 5rem;
+    letter-spacing: 4px;
+}
+
+/* Ajuste visual para las flechas de Bootstrap para que se noten */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1); /* Cambia las flechas nativas a color negro/oscuro si es necesario */
+}
+
+
+/* Efecto interactivo para el collage de trabajos */
+.img-mosaico {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.position-relative:hover .img-mosaico {
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   EFECTO DE SCROLL REVEAL (Aparición suave al bajar)
+   ========================================================================== */
+
+/* Estado inicial: El elemento está invisible y tirado 30px hacia abajo */
+.reveal-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+/* Estado activo: Cuando JavaScript detecta el scroll, se activa esto */
+.reveal-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+

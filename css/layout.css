@@ -1,0 +1,73 @@
+/* css/layout.css */
+
+/* NAVEGACIÓN TRANSLÚCIDA: 
+   Hace que el menú flote en el tope de la pantalla por encima del Slider. */
+.main-nav {
+    position: absolute; /* Saca al menú del flujo normal del HTML para que flote encima de lo que sigue */
+    width: 100%;        /* Obliga al menú a estirarse de punta a punta de la pantalla */
+    z-index: 1000;      /* Capa de prioridad alta para asegurarse de que nada tape al menú al hacer scroll */
+    
+    /* Degradado de negro a transparente para que el texto blanco siempre se lea bien sobre las fotos */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    
+    padding-top: 15px;    /* Espaciado interno superior */
+    padding-bottom: 15px; /* Espaciado interno inferior */
+}
+
+/* El texto secundario debajo de LA PUNTUAL ("Marmolería") */
+.navbar-brand .tracking-wide {
+    letter-spacing: 3px;          /* Separa las letras entre sí */
+    font-size: 0.75rem;           /* Tamaño de fuente chiquito y delicado */
+    text-transform: uppercase;     /* Fuerza a que siempre esté en mayúsculas */
+}
+
+/* COMPORTAMIENTO GENERAL DEL SLIDER (CARRUSEL): 
+   Define la altura fija del carrusel para que impacte visualmente. */
+
+
+/* Obligamos a que el carrusel y cada diapositiva tengan altura real */
+.carousel, 
+.carousel-inner, 
+.carousel-item {
+    height: 85vh !important;     /* 85% de la pantalla */
+    min-height: 500px !important; /* Altura mínima de seguridad para que no se aplaste */
+}
+
+/* FONDOS INDIVIDUALES DE LAS MARCAS: 
+   Acá mapeamos las fotos reales que llaman a tu WordPress. */
+/* Slide 1: DEKTON */
+.slide-dekton {
+    /* El '../' saca al navegador de la carpeta css para que encuentre la carpeta img */
+    background-image: url('../img/dekton/dekton-slider.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.slide-silestone {
+    /* El '../' saca al navegador de la carpeta css para que encuentre la carpeta img */
+    background-image: url('../img/silestone/sileston-slider.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.slide-neolith {
+/* El '../' saca al navegador de la carpeta css para que encuentre la carpeta img */
+    background-image: url('../img/neolith/neolith-slider.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;}
+
+.slide-marmotech {
+/* El '../' saca al navegador de la carpeta css para que encuentre la carpeta img */
+    background-image: url('../img/marmotch/marmotch-slider.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;}
+
+/* SECCIÓN DEL CATÁLOGO: 
+   Márgenes para el contenedor general de las piedras. */
+#catalogo-seccion {
+    margin-top: 40px; /* Despega el catálogo del slider para que no se encimen visualmente */
+}
