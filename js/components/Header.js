@@ -38,7 +38,7 @@ export const Header = {
                             
                             <!-- HOME -->
                             <li class="nav-item">
-                                <a class="nav-link active text-danger" href="#">HOME</a>
+                                <a class="nav-link active text-danger" href="index.html"onclick="window.location.href='dekton.html';">HOME</a>
                             </li>
                             
                             <!-- MATERIALES SUBMENÚ -->
@@ -47,7 +47,7 @@ export const Header = {
                                     MATERIALES
                                 </a>
                                 <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownMateriales">
-                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">DEKTON</a></li>
+                                    <li><a class="dropdown-item text-white small py-2" href="dekton.html"onclick="window.location.href='dekton.html';">DEKTON</a></li>
                                     <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">SILESTONE</a></li>
                                     <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">NEOLITH</a></li>
                                     <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">PURESTONE</a></li>
@@ -92,4 +92,5 @@ export const Header = {
             </nav>
         `;
     }
+    
 };

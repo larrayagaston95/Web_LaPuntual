@@ -1,6 +1,7 @@
 // js/materiales.js
 
 // Exportamos la constante para que otros archivos puedan usarla
+/*
 export const materiales = [
     { nombre: "Gris Mara", categoria: "Granito", img: "https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Gris-Mara.jpg" },
     { nombre: "Kelya", categoria: "Dekton", img: "https://lapuntualsrl.com.ar/wp-content/uploads/2021/05/Dekton-Kelya.jpg" },
@@ -10,4 +11,20 @@ export const materiales = [
     { nombre: "trilium", categoria: "Dekton", img: "img/dekton/trilium.jpg" },
     { nombre: "Calacatta-Gold", categoria: "Silestone", img: "img/silestone/Calacatta-Gold2.jpg" },
     { nombre: "Pmarengo", categoria: "Silestone", img: "img/silestone/marengo.jpg" }
+];
+*/
+
+// js/materiales/materiales.js
+
+// 1. Importamos los catálogos individuales de cada marca
+import { dekton } from './materiales-dekton.js';
+// import { silestone } from './materiales-silestone.js'; <-- Descomentá cuando lo crees
+// import { neolith } from './materiales-neolith.js';   <-- Descomentá cuando lo crees
+
+/* 2. Unificamos todo en una sola base de datos global.
+      Usamos '...' para fusionar los arrays de forma limpia en una sola lista plana. */
+export const materiales = [
+    ...dekton,
+    // ...silestone,
+    // ...neolith
 ];

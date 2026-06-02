@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dekton - Superficies Ultra-Compactas | La Puntual SRL</title>
+    <!-- Bootstrap 5 CSS e Iconos Oficiales -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Archivo maestro de estilos (orquesta todos los módulos .css) -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dekton.css">
+</head>
+
+<body>
+
+    <!-- Menú de Navegación Dinámico (Inyectado por Header.js) -->
+    <div id="global-nav"></div>
+
+    <!-- 1. HERO DE PORTADA TEMÁTICA DEKTON (AHORA COMPLETO DE PUNTA A PUNTA) -->
+    <!-- 1. HERO REFORMADO: AJUSTE DE ENCUADRE Y LOGO VISIBLE -->
+    <header class="position-relative d-flex align-items-center justify-content-center text-white w-100"
+        style="background: url('img/dekton/dekton-portada.jpg') center top / cover no-repeat; height: 100vh; min-height: 100vh;">
+
+        <!-- Gradiente dinámico: Más oscuro arriba para que resalte "LA PUNTUAL" y abajo para el contraste -->
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%); z-index: 1;">
+        </div>
+
+        <div class="container position-relative text-center" style="z-index: 2;">
+            <h1 class="display-1 fw-bold text-uppercase italic-title m-0"
+                style="font-size: calc(2.5rem + 4vw); color: #ff0000 !important; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9); font-style: italic; letter-spacing: 4px;">
+                DEKTON
+            </h1>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 2. INTRODUCCIÓN TÉCNICA Y ATRIBUTOS DE MARCA (CENTRADO TOTAL) -->
+        <section class="py-5 bg-white reveal-scroll">
+            <div class="container">
+                <!-- Justify-content-center asegura que la fila empuje todo al medio -->
+                <div class="row justify-content-center">
+
+                    <!-- Cambiado a col-lg-8 para mejor lectura y agregado mx-auto + text-center -->
+                    <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+                        <span class="text-danger fw-bold text-uppercase tracking-wider small d-block mb-2"
+                            style="letter-spacing: 2px;">
+                            Innovación Material
+                        </span>
+
+                        <!-- El div de abajo genera la rayita roja decorativa abajo del título, ideal para diseños centrados -->
+                        <h2 class="fw-bold text-uppercase mb-3"
+                            style="font-size: 2.2rem; letter-spacing: 0.5px; color: #111111;">
+                            ¿Qué es Dekton?
+                        </h2>
+                        <div class="mx-auto mb-4" style="width: 50px; height: 2px; background-color: #dc3545;"></div>
+
+                        <p class="lead text-muted mb-4" style="font-size: 1.1rem; line-height: 1.7;">
+                            Dekton es una sofisticada mezcla de más de 20 minerales naturales procesados, transformada
+                            mediante la exclusiva tecnología de sinterización de partículas (TSP).
+                        </p>
+
+                        <p class="text-muted small mb-0" style="line-height: 1.6; font-size: 0.95rem;">
+                            Este proceso industrial simula en minutos los cambios estructurales que la piedra natural
+                            experimenta durante miles de años a altas presiones y temperaturas extremas. El resultado
+                            final es una superficie de alta gama con porosidad absoluta, libre de micro-defectos o
+                            tensiones internas, ideal tanto para mesadas de cocina de uso intensivo como para
+                            revestimientos exteriores expuestos a la intemperie.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- SECCIÓN: VENTAJAS TECNOLÓGICAS (CON FORMATO DE TARJETAS NEGRAS) -->
+        <section class="py-5 tecnic-features-section text-white" style="background-color: #0a0a0a;">
+            <div class="container py-4">
+
+                <div class="text-center mb-5">
+                    <span class="text-danger fw-bold text-uppercase tracking-wider small d-block mb-1"
+                        style="letter-spacing: 2px;">
+                        Propiedades Avanzadas
+                    </span>
+                    <h2 class="fw-bold text-uppercase m-0" style="letter-spacing: 1px;">Ventajas Tecnológicas</h2>
+                    <div class="mx-auto mt-2" style="width: 50px; height: 2px; background-color: #dc3545;"></div>
+                </div>
+
+                <!-- Grilla simétrica con tarjetas reales -->
+                <div class="row g-4 justify-content-center">
+
+                    <!-- 1. Resistencia al Rayado -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-gem fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Altamente Resistente<br>al Rayado</h6>
+                        </div>
+                    </div>
+
+                    <!-- 2. Resistencia a las Manchas -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-droplet-half fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Resistencia a las<br>Manchas</h6>
+                        </div>
+                    </div>
+
+                    <!-- 3. Resistencia a la Abrasión -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-gear-wide-connected fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Resistencia a la<br>Abrasión</h6>
+                        </div>
+                    </div>
+
+                    <!-- 4. Resistencia al Hielo y Deshielo -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-snow fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Resistencia al Hielo<br>y Deshielo</h6>
+                        </div>
+                    </div>
+
+                    <!-- 5. Estabilidad del Color -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-palette fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Estabilidad<br>del Color</h6>
+                        </div>
+                    </div>
+
+                    <!-- 6. Estabilidad Dimensional -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-arrows-fullscreen fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Estabilidad<br>Dimensional</h6>
+                        </div>
+                    </div>
+
+                    <!-- 7. Alta Resistencia a la Hidrólisis -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-shield-shaded fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Alta Resistencia<br>a la Hidrólisis</h6>
+                        </div>
+                    </div>
+
+                    <!-- 8. Material Incombustible (FORZADO) -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="feature-tech-card text-center p-4 h-100">
+                            <div class="icon-container">
+                                <i class="bi bi-shield-fire fs-2 icon-relieve"></i>
+                            </div>
+                            <h6 class="fw-bold text-uppercase small m-0">Material<br>Incombustible</h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 5. SECCIÓN INFERIOR: MUESTRARIO / CATÁLOGO CON FILTRADO ANMADO -->
+        <section id="catalogo-seccion" class="py-5 bg-light">
+            <div class="container py-4">
+
+                <!-- Encabezado del catálogo -->
+                <div class="text-center mb-4">
+                    <span class="text-danger fw-bold text-uppercase tracking-wider small d-block mb-1"
+                        style="letter-spacing: 2px;">
+                        Colección Exclusiva
+                    </span>
+                    <h2 class="fw-bold text-uppercase m-0" style="letter-spacing: 1px; color: #111111;">Modelos
+                        Disponibles</h2>
+                    <div class="mx-auto mt-2" style="width: 50px; height: 2px; background-color: #dc3545;"></div>
+                </div>
+
+                <!-- BOTONERA DE FILTRADO MINIMALISTA -->
+                <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
+                    <button class="btn btn-filter active" data-filter="all">Ver Todas</button>
+                    <button class="btn btn-filter" data-filter="Grupo 0">Grupo 0</button>
+                    <button class="btn btn-filter" data-filter="Grupo 1">Grupo 1</button>
+                    <button class="btn btn-filter" data-filter="Grupo 2">Grupo 2</button>
+                    <button class="btn btn-filter" data-filter="Grupo 3">Grupo 3</button>
+                    <button class="btn btn-filter" data-filter="Grupo 4">Grupo 4</button>
+                    
+                </div>
+
+                <!-- Grilla de Muestras (Agregamos clases de filtrado y data-category) -->
+                <div class="row g-4 justify-content-center" id="grilla-materiales-dekton">
+
+                    <!-- Piedra 1: KELYA -->
+                    <div class="col-12 col-sm-6 col-lg-3 stone-item" data-category="natural">
+                        <div class="muestra-stone-card">
+                            <div class="stone-image-wrapper">
+                                <img src="img/dekton/kelya.jpg" alt="Dekton Kelya" class="stone-img">
+                            </div>
+                            <div class="stone-info-overlay">
+                                <div class="stone-text">
+                                    <h5 class="fw-bold m-0">KELYA</h5>
+                                    <span
+                                        class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle mt-1">Natural
+                                        Collection</span>
+                                </div>
+                                <button class="btn-stone-view" title="Ver detalles"><i
+                                        class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Piedra 2: ZENITH -->
+                    <div class="col-12 col-sm-6 col-lg-3 stone-item" data-category="solid">
+                        <div class="muestra-stone-card">
+                            <div class="stone-image-wrapper">
+                                <img src="img/dekton/zenith.jpg" alt="Dekton Zenith" class="stone-img">
+                            </div>
+                            <div class="stone-info-overlay">
+                                <div class="stone-text">
+                                    <h5 class="fw-bold m-0">ZENITH</h5>
+                                    <span
+                                        class="badge rounded-pill bg-dark-subtle text-dark border border-dark-subtle mt-1">Solid
+                                        Collection</span>
+                                </div>
+                                <button class="btn-stone-view" title="Ver detalles"><i
+                                        class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Piedra 3: LAURENT -->
+                    <div class="col-12 col-sm-6 col-lg-3 stone-item" data-category="natural">
+                        <div class="muestra-stone-card">
+                            <div class="stone-image-wrapper">
+                                <img src="img/dekton/laurent.jpg" alt="Dekton Laurent" class="stone-img">
+                            </div>
+                            <div class="stone-info-overlay">
+                                <div class="stone-text">
+                                    <h5 class="fw-bold m-0">LAURENT</h5>
+                                    <span
+                                        class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle mt-1">Natural
+                                        Collection</span>
+                                </div>
+                                <button class="btn-stone-view" title="Ver detalles"><i
+                                        class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Piedra 4: REM -->
+                    <div class="col-12 col-sm-6 col-lg-3 stone-item" data-category="natural">
+                        <div class="muestra-stone-card">
+                            <div class="stone-image-wrapper">
+                                <img src="img/dekton/rem.jpg" alt="Dekton Rem" class="stone-img">
+                            </div>
+                            <div class="stone-info-overlay">
+                                <div class="stone-text">
+                                    <h5 class="fw-bold m-0">REM</h5>
+                                    <span
+                                        class="badge rounded-pill bg-dark-subtle text-dark border border-dark-subtle mt-1">Natural
+                                        Collection</span>
+                                </div>
+                                <button class="btn-stone-view" title="Ver detalles"><i
+                                        class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página Global (Inyectado por Footer.js) -->
+    <div id="global-footer"></div>
+
+    <!-- Scripts de Framework y el Controlador de la Vista -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/page/dekton.js"></script>
+</body>
+
+</html>

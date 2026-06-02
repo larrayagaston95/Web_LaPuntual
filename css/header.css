@@ -1,0 +1,59 @@
+/* css/header.css */
+
+/* ==========================================================================
+   MÓDULO DE NAVEGACIÓN COMPLETO (Hover sin saltos y limpieza de focos)
+   ========================================================================== */
+
+/* 1. DESPLIEGUE AUTOMÁTICO AL PASAR EL MOUSE (Solo en Computadoras) */
+@media (min-width: 992px) {
+    .main-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        top: 90%; /* Ajuste fino para evitar huecos en el aire */
+        animation: entradaDropdown 0.2s ease-out;
+    }
+
+    .main-nav .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        top: 100%;
+        margin-top: 0 !important;
+        transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, top 0.15s ease-in-out;
+        
+        /* El "Puente Mágico" invisible para evitar que el menú parpadee o salte */
+        border-top: 10px solid transparent !important;
+    }
+}
+
+/* Animación sutil de caída del submenú */
+@keyframes entradaDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. ESTILOS INTERNOS DE LAS OPCIONES DEL DROPDOWN */
+.main-nav .dropdown-menu .dropdown-item {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav .dropdown-menu .dropdown-item:hover,
+.main-nav .dropdown-menu .dropdown-item:focus {
+    background-color: #dc3545 !important; /* Pinta la opción seleccionada de rojo */
+    color: #ffffff !important;
+}
+
+/* 3. LIMPIEZA EL FONDO BLANCO GENÉRICO DE BOOTSTRAP */
+.main-nav .nav-item.dropdown .nav-link:focus,
+.main-nav .nav-item.dropdown .nav-link.show,
+.main-nav .nav-item.dropdown:hover .nav-link {
+    background-color: transparent !important; /* Mantiene el fondo oscuro de la barra */
+    color: #dc3545 !important;                /* Pinta la palabra activa de tu color rojo */
+}

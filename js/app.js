@@ -1,5 +1,5 @@
 // js/app.js
-import { materiales } from './materiales.js';
+import { materiales } from './materiales/materiales.js';
 import { Catalogo } from './components/Catalogo.js'; // Levantamos el componente que dibuja tus tarjetas
 import { Header } from './components/Header.js';
 import { Footer } from './components/Footer.js';
