@@ -1,7 +1,5 @@
 // js/page/dekton.js
 
-// Al estar dentro de /page/, subimos un nivel con "../" para acceder a las carpetas vecinas
-import { dekton } from '../materiales/materiales-dekton.js';
 import { Header } from '../components/Header.js';
 import { Footer } from '../components/Footer.js';
 
@@ -10,11 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     Header.render('global-nav');
     Footer.render('global-footer');
 
-    // CORRECCIÓN: Apuntamos exactamente al contenedor dinámico
     const grilla = document.getElementById('grilla-materiales-dekton');
-    
-    // CORRECCIÓN: Unificamos la clase con tu CSS (.btn-filter)
     const botonesFiltro = document.querySelectorAll('.btn-filter');
+
+    // Variable global en memoria para guardar las piedras que devuelva la base de datos
+    let materialesDB = [];
+
+    // URL DE TU API: Mientras pruebes local, usás localhost. Al subirlo ponés la IP de tu Cloud Server.
+    const API_URL = 'http://localhost:8080/api/materiales/Dekton';
 
     // 2. Función encargada de dibujar las tarjetas con el diseño premium minimalista
     const mostrarPiedras = (lista) => {
@@ -30,25 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         lista.forEach(piedra => {
-            // Evaluamos la subcategoría para asignar el estilo del badge
+            // Evaluamos la subcategoría para asignar el estilo del badge por Grupo comercial
             const subcatNormalizada = piedra.subcategoria ? piedra.subcategoria.toLowerCase() : '';
             let badgeClass = 'bg-dark-subtle text-dark border-dark-subtle';
             let nombreMostrarBadge = piedra.subcategoria || 'Premium';
 
-            if (subcatNormalizada.includes('Grupo 0')) {
+            if (subcatNormalizada.includes('grupo 0')) {
                 badgeClass = 'bg-danger-subtle text-danger border-danger-subtle';
                 nombreMostrarBadge = 'Grupo 0';
-            } else if (subcatNormalizada.includes('Grupo 1')) {
+            } else if (subcatNormalizada.includes('grupo 1')) {
                 badgeClass = 'bg-secondary-subtle text-secondary border-secondary-subtle';
                 nombreMostrarBadge = 'Grupo 1';
-            } else if (subcatNormalizada.includes('Grupo 2') || subcatNormalizada.includes('solid')) {
+            } else if (subcatNormalizada.includes('grupo 2')) {
                 badgeClass = 'bg-dark-subtle text-dark border-dark-subtle';
                 nombreMostrarBadge = 'Grupo 2';
-            }else if (subcatNormalizada.includes('Grupo 3') || subcatNormalizada.includes('solid')) {
-                badgeClass = 'bg-dark-subtle text-dark border-dark-subtle';
+            } else if (subcatNormalizada.includes('grupo 3')) {
+                badgeClass = 'bg-info-subtle text-info border-info-subtle'; // Color alternativo sutil
                 nombreMostrarBadge = 'Grupo 3';
-            } else if (subcatNormalizada.includes('Grupo 4') || subcatNormalizada.includes('solid')) {
-                badgeClass = 'bg-dark-subtle text-dark border-dark-subtle';
+            } else if (subcatNormalizada.includes('grupo 4')) {
+                badgeClass = 'bg-warning-subtle text-warning border-warning-subtle'; // Color oro premium
                 nombreMostrarBadge = 'Grupo 4';
             }
 
@@ -75,33 +76,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Lanzamiento inicial automático de las piedras
-    mostrarPiedras(dekton);
+    // CONEXIÓN EN TIEMPO REAL: Consumimos la base de datos mediante Spring Boot
+    fetch(API_URL)
+        .then(response => {
+            if (!response.ok) throw new Error("Error en la respuesta del servidor");
+            return response.json();
+        })
+        .then(data => {
+            materialesDB = data;          // Almacenamos los materiales reales traídos de MySQL
+            mostrarPiedras(materialesDB); // Dibujamos el muestrario inicial automáticamente
+        })
+        .catch(error => {
+            console.error("Error conectando a la API de La Puntual:", error);
+            grilla.innerHTML = `
+                <div class="col-12 text-center text-danger my-5">
+                    <p class="fs-5">Hubo un problema al cargar el catálogo. Por favor, intente nuevamente más tarde.</p>
+                </div>`;
+        });
 
-    // Lógica interactiva de filtrado sin fallas
+    // Lógica interactiva de filtrado sobre el array dinámico de la base de datos
     if (botonesFiltro.length > 0) {
         botonesFiltro.forEach(boton => {
             boton.addEventListener('click', (e) => {
                 const botonActual = e.target.closest('.btn-filter');
                 if (!botonActual) return;
 
-                // Cambiamos estado visual del botón (.active de tu CSS)
+                // Cambiamos estado visual del botón activo
                 botonesFiltro.forEach(btn => btn.classList.remove('active'));
                 botonActual.classList.add('active');
 
-                // Traemos el atributo del HTML, limpio y en minúsculas
+                // Traemos el atributo del botón HTML (ej: data-filter="Grupo 1")
                 const filtroAtributo = botonActual.getAttribute('data-filter').toLowerCase().trim();
 
                 if (filtroAtributo === 'all' || filtroAtributo === 'todos') {
-                    mostrarPiedras(dekton);
+                    mostrarPiedras(materialesDB);
                 } else {
-                    // Filtramos buscando coincidencias parciales con tu archivo de materiales
-                    const filtrados = dekton.filter(m => {
+                    // Filtramos en la memoria del navegador buscando coincidencias sobre lo que trajo la BD
+                    const filtrados = materialesDB.filter(m => {
                         if (!m.subcategoria) return false;
                         
                         const subcatBaseDatos = m.subcategoria.toLowerCase().trim();
                         
-                        // Resuelve el puente: si el botón es "natural" y la base de datos "naturales" -> da TRUE
+                        // Evalúa concordancia flexible entre el botón y la columna de MySQL
                         return subcatBaseDatos.includes(filtroAtributo) || filtroAtributo.includes(subcatBaseDatos);
                     });
                     
