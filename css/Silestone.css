@@ -1,0 +1,37 @@
+/* Color dorado base para Silestone */
+.text-gold {
+    color: #c5a059 !important;
+}
+
+.bg-gold {
+    background-color: #c5a059 !important;
+}
+
+/* Ícono en dorado con brillo neón constante */
+.icon-relieve-gold {
+    color: #c5a059 !important;
+    text-shadow: 0 0 12px rgba(197, 160, 89, 0.8), 0 0 25px rgba(197, 160, 89, 0.5);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Tarjeta negra base */
+.feature-tech-card {
+    background-color: #121212 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+/* EFECTO HOVER POTENTE: Sombra dorada bien marcada + borde dorado */
+.feature-tech-card:hover {
+    border-color: #c5a059 !important;
+    background-color: #1a1915 !important; /* Tono muy sutil de fondo cálido al pasar el mouse */
+    transform: translateY(-5px); /* Eleva la tarjeta suavemente */
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.45), 0 0 15px rgba(197, 160, 89, 0.2) !important;
+}
+
+/* El ícono se agranda un toque al pasar el mouse */
+.feature-tech-card:hover .icon-relieve-gold {
+    transform: scale(1.15);
+    text-shadow: 0 0 18px rgba(197, 160, 89, 1), 0 0 35px rgba(197, 160, 89, 0.7);
+}

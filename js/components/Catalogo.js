@@ -1,37 +1,37 @@
-// js/components/Catalogo.js
-
-/* EXPORTACIÓN DEL COMPONENTE:
-   Creamos el objeto 'Catalogo' y lo exportamos para que cualquier pantalla 
-   (como la home o páginas secundarias) pueda reutilizar el diseño de las tarjetas. */
 export const Catalogo = {
-    
-    /* MÉTODO RENDER:
-       Función miembro que recibe la lista de datos a dibujar y el ID del contenedor HTML. */
     render: (lista, contenedorId) => {
-        // Buscamos el elemento contenedor físico en la pantalla
         const contenedor = document.getElementById(contenedorId);
-        
-        // CONTROL DE SEGURIDAD: Si no encuentra el contenedor en la página actual, frena el script sin tirar errores
         if (!contenedor) return;
-        
-        /* LIMPIEZA DEL CONTENEDOR:
-           Vaciamos el contenido previo. Esto es CLAVE para que al filtrar las piedras, 
-           las anteriores se borren y la grilla se actualice limpia. */
+
         contenedor.innerHTML = ""; 
 
-        /* BUCLE DE MAQUETADO:
-           Recorremos tus materiales reales para estructurar las columnas de Bootstrap. */
-        lista.forEach(item => {
+        if (!lista || lista.length === 0) {
+            contenedor.innerHTML = `
+                <div class="col-12 text-center text-muted my-5 py-4">
+                    <p class="fs-5 m-0">No hay muestras disponibles en esta sección.</p>
+                </div>`;
+            return;
+        }
+
+        lista.forEach(articulo => {
+            const subcat = articulo.tipo ? articulo.tipo.nombre : (articulo.subcategoria || 'Premium');
+
             contenedor.innerHTML += `
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="${item.img}" class="card-img-top p-2" alt="${item.nombre}" style="height: 200px; object-fit: cover; border-radius: 12px;">
-                        <div class="card-body text-center d-flex flex-column justify-content-between">
-                            <div>
-                                <small class="text-uppercase fw-bold text-muted d-block mb-1" style="font-size: 0.75rem;">${item.categoria}</small>
-                                <h5 class="card-title fw-bold text-dark mb-3">${item.nombre}</h5>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 stone-item">
+                    <div class="muestra-stone-card">
+                        <div class="stone-image-wrapper">
+                            <img src="${articulo.imagen}" class="stone-img" alt="${articulo.nombre}" loading="lazy">
+                        </div>
+                        <div class="stone-info-overlay">
+                            <div class="stone-text">
+                                <h5 class="fw-bold text-uppercase m-0">${articulo.nombre}</h5>
+                                <span class="badge rounded-pill border mt-1 bg-dark-subtle text-white border-secondary" style="font-size: 0.65rem; font-weight: 700;">
+                                    ${subcat}
+                                </span>
                             </div>
-                            <button class="btn btn-dark btn-sm w-100 mt-2">Consultar</button>
+                            <button class="btn-stone-view" title="Ver detalles">
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

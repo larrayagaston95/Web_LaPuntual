@@ -19,6 +19,14 @@
     text-transform: uppercase;
 }
 
+
+/* Las secciones son visibles por defecto */
+.reveal-scroll {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out;
+}
+
 /* Slider / Portada Principal */
 .hero-slider {
     background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
