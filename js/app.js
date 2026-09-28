@@ -1,18 +1,53 @@
 // js/app.js
-import { materiales } from './materiales/materiales.js';
-import { Catalogo } from './components/Catalogo.js'; // Levantamos el componente que dibuja tus tarjetas
+import { Catalogo } from './components/Catalogo.js';
 import { Header } from './components/Header.js';
 import { Footer } from './components/Footer.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inyectamos los componentes organizados
+/* ==========================================================================
+   CONFIGURACIÓN DINÁMICA DE API (LOCAL / PRODUCCIÓN)
+   ========================================================================== */
+const IS_LOCAL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+const API_URL = IS_LOCAL 
+    ? "http://localhost:8081/api" 
+   : "http://149.50.141.208:8081/api";
+
+/* ==========================================================================
+   INICIALIZACIÓN DE LA APLICACIÓN
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', async () => {
+
+    // 1. Inyectamos componentes estructurales
     Header.render('global-nav');
     Footer.render('global-footer');
 
-    // 2. Tu lógica nativa de carga inicial y filtrado del catálogo
+    // 2. Carga dinámica de materiales desde Spring Boot
     if (document.getElementById('grilla-materiales')) {
-        Catalogo.render(materiales, 'grilla-materiales');
+        let materiales = [];
 
+        try {
+            // Traemos los datos de la API de forma asíncrona
+            const response = await fetch(`${API_URL}/materiales`);
+            
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+
+            materiales = await response.json();
+            
+            // Renderizado inicial
+            Catalogo.render(materiales, 'grilla-materiales');
+
+        } catch (error) {
+            console.error('Error al conectar con la API de materiales:', error);
+            document.getElementById('grilla-materiales').innerHTML = `
+                <div class="col-12 text-center text-danger py-5">
+                    <p>No se pudieron cargar los materiales. Intente nuevamente más tarde.</p>
+                </div>
+            `;
+        }
+
+        // Configuración de Filtros de Categoría
         const botones = document.querySelectorAll('.btn-filtro');
         botones.forEach(boton => {
             boton.addEventListener('click', (e) => {
@@ -26,12 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-});
-
-// js/app.js
-
-document.addEventListener('DOMContentLoaded', () => {
-    // ... (Tus renderizados de Header, Footer y filtros se quedan arriba igual) ...
 
     /* ==========================================================================
        MOTOR INTERACTIVE DE SCROLL REVEAL
@@ -46,16 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const scrollObservador = new IntersectionObserver((entradas, observador) => {
         entradas.forEach(entrada => {
-            // Si el elemento entró en la zona visible de la pantalla
             if (entrada.isIntersecting) {
                 entrada.target.classList.add('active');
-                // Dejamos de observarlo para que la animación ocurra una sola vez y quede fijo
                 observador.unobserve(entrada.target);
             }
         });
     }, scrollOpciones);
 
-    // Activamos la vigilancia en cada etiqueta configurada
     elementosAObservar.forEach(elemento => {
         scrollObservador.observe(elemento);
     });

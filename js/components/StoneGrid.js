@@ -20,7 +20,7 @@ export const StoneGrid = {
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 stone-card-container">
                     <div class="muestra-stone-card">
                         <div class="stone-image-wrapper">
-                            <img src="${material.imagen}" class="stone-img" alt="${material.nombre}" loading="lazy">
+                            <img src="/${material.imagen}" class="stone-img" alt="${material.nombre}" loading="lazy">
                         </div>
                         <div class="stone-info-overlay">
                             <div class="stone-text">

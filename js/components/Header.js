@@ -1,9 +1,3 @@
-// js/components/Header.js
-
-// js/components/Header.js
-
-// js/components/Header.js
-
 export const Header = {
     render: (contenedorId) => {
         const contenedor = document.getElementById(contenedorId);
@@ -23,10 +17,10 @@ export const Header = {
                     </div>
                 </div>
             </div>
-
+            
             <nav class="navbar navbar-expand-lg navbar-dark main-nav">
                 <div class="container">
-                    <a class="navbar-brand d-flex flex-column" href="#">
+                    <a class="navbar-brand d-flex flex-column" href="index.html">
                         <span class="fw-bold fs-3 lh-1">LA PUNTUAL</span>
                         <span class="fs-6 tracking-wide text-secondary">Marmolería</span>
                     </a>
@@ -35,54 +29,86 @@ export const Header = {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto fw-bold text-uppercase" style="font-size: 0.9rem; letter-spacing: 1px;">
-                            
-                            <!-- HOME -->
+
                             <li class="nav-item">
-                                <a class="nav-link active text-danger" href="index.html"onclick="window.location.href='dekton.html';">HOME</a>
+                                <a class="nav-link active text-danger" href="index.html">HOME</a>
                             </li>
-                            
-                            <!-- MATERIALES SUBMENÚ -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMateriales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    MATERIALES
-                                </a>
-                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownMateriales">
-                                    <li><a class="dropdown-item text-white small py-2" href="dekton.html" onclick="window.location.href='dekton.html';">DEKTON</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="silestone.html" nclick="window.location.href='silestone.html';">SILESTONE</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">NEOLITH</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">PURESTONE</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">MARMOTECH</a></li>
-                                    <li><hr class="dropdown-divider border-secondary"></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#catalogo-seccion">PIEDRAS NATURALES</a></li>
-                                </ul>
-                            </li>
-                            
-                            <!-- BACHAS SUBMENÚ -->
+<!-- MATERIALES -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMateriales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        MATERIALES
+    </a>
+    <!-- Nivel 1: Dropdown normal de Bootstrap -->
+    <ul class="dropdown-menu bg-dark border-0 shadow py-2" aria-labelledby="navbarDropdownMateriales">
+
+        <!-- Nivel 2: Flyout (Piedras Naturales) -->
+        <li class="flyout-parent">
+            <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="#">
+                PIEDRAS NATURALES <span class="fs-6 text-secondary">▸</span>
+            </a>
+            <!-- Nivel 3: Menú lateral -->
+            <ul class="flyout-menu bg-dark shadow">
+                <li><a class="dropdown-item text-white" href="marmol.html">MÁRMOL</a></li>
+                <li><a class="dropdown-item text-white" href="granito.html">GRANITO</a></li>
+            </ul>
+        </li>
+
+        <!-- Nivel 2: Flyout (Cuarzo) -->
+        <li class="flyout-parent">
+            <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="#">
+                SUPERFICIES DE CUARZO <span class="fs-6 text-secondary">▸</span>
+            </a>
+            <ul class="flyout-menu bg-dark shadow">
+                <li><a class="dropdown-item text-white" href="silestone.html">SILESTONE</a></li>
+                <li><a class="dropdown-item text-white" href="purastone.html">PURASTONE</a></li>
+            </ul>
+        </li>
+
+        <!-- Nivel 2: Flyout (Sinterizadas) -->
+        <li class="flyout-parent">
+            <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="#">
+                SUPERFICIES SINTERIZADAS <span class="fs-6 text-secondary">▸</span>
+            </a>
+            <ul class="flyout-menu bg-dark shadow">
+                <li><a class="dropdown-item text-white" href="dekton.html">DEKTON</a></li>
+                <li><a class="dropdown-item text-white" href="neolith.html">NEOLITH</a></li>
+                <li><a class="dropdown-item text-white" href="prima.html">PRIMA</a></li>
+            </ul>
+        </li>
+
+        <!-- Enlace simple sin submenú -->
+        <li>
+            <a class="dropdown-item text-white pt-2" href="cuarcitas.html">CUARCITAS NATURALES</a>
+        </li>
+
+    </ul>
+</li>
+
+                            <!-- BACHAS -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBachas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     BACHAS
                                 </a>
-                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownBachas">
-                                    <li><a class="dropdown-item text-white small py-2" href="#">LINEA JOHNSON</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#">ARMADAS</a></li>
+                                <ul class="dropdown-menu bg-dark border-0 shadow py-2" aria-labelledby="navbarDropdownBachas">
+                                    <li><a class="dropdown-item text-white" href="#">LINEA JOHNSON</a></li>
+                                    <li><a class="dropdown-item text-white" href="#">ARMADAS</a></li>
                                 </ul>
                             </li>
-                            
-                            <!-- TU MESADA -->
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#">TU MESADA</a>
                             </li>
-                            
-                            <!-- LA PUNTUAL SUBMENÚ (Reemplazando a Contacto) -->
+
+                            <!-- LA PUNTUAL -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLaPuntual" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     LA PUNTUAL
                                 </a>
-                                <ul class="dropdown-menu bg-dark border-0 shadow" aria-labelledby="navbarDropdownLaPuntual">
-                                    <li><a class="dropdown-item text-white small py-2" href="#">NOSOTROS</a></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#">TRABAJOS REALIZADOS</a></li>
-                                    <li><hr class="dropdown-divider border-secondary"></li>
-                                    <li><a class="dropdown-item text-white small py-2" href="#">CONTACTO</a></li>
+                                <ul class="dropdown-menu bg-dark border-0 shadow py-2" aria-labelledby="navbarDropdownLaPuntual">
+                                    <li><a class="dropdown-item text-white" href="#">NOSOTROS</a></li>
+                                    <li><a class="dropdown-item text-white" href="#">TRABAJOS REALIZADOS</a></li>
+                                    <li><hr class="dropdown-divider border-secondary my-1"></li>
+                                    <li><a class="dropdown-item text-white" href="#">CONTACTO</a></li>
                                 </ul>
                             </li>
 
@@ -92,5 +118,4 @@ export const Header = {
             </nav>
         `;
     }
-    
 };

@@ -35,3 +35,39 @@
     transform: scale(1.15);
     text-shadow: 0 0 18px rgba(197, 160, 89, 1), 0 0 35px rgba(197, 160, 89, 0.7);
 }
+
+/* ==========================================================================
+   ESTRUCTURA BASE DE LAS TARJETAS (Respaldo para Silestone)
+   ========================================================================== */
+.feature-tech-card {
+    background-color: #121212 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 165px;
+    padding: 1.25rem 0.75rem !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s ease;
+    height: 100%;
+}
+
+.feature-tech-card .icon-container {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.feature-tech-card h6 {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+}
+

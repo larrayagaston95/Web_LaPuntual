@@ -1,33 +1,64 @@
 /* css/header.css */
 
 /* ==========================================================================
-   MÓDULO DE NAVEGACIÓN COMPLETO (Hover sin saltos y limpieza de focos)
+   MÓDULO DE NAVEGACIÓN COMPLETO (Hover sin saltos, Flyout lateral y limpieza)
    ========================================================================== */
 
-/* 1. DESPLIEGUE AUTOMÁTICO AL PASAR EL MOUSE (Solo en Computadoras) */
+/* 1. COMPORTAMIENTO Y DESPLIEGUE EN ESCRITORIO */
 @media (min-width: 992px) {
-    .main-nav .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        top: 90%; /* Ajuste fino para evitar huecos en el aire */
+
+    /* Quita límites de desborde para permitir que el submenú salga a la derecha */
+    .main-nav .dropdown-menu {
+        overflow: visible !important;
+        margin-top: 0 !important;
+        border-top: 10px solid transparent !important; /* Puente invisible vertical */
+    }
+
+    /* NIVEL 1: Despliegue del menú principal al pasar el mouse */
+    .main-nav .nav-item.dropdown:hover > .dropdown-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        top: 90% !important;
         animation: entradaDropdown 0.2s ease-out;
     }
 
-    .main-nav .dropdown-menu {
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-        top: 100%;
-        margin-top: 0 !important;
-        transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, top 0.15s ease-in-out;
-        
-        /* El "Puente Mágico" invisible para evitar que el menú parpadee o salte */
-        border-top: 10px solid transparent !important;
+    /* NIVEL 2: Contenedor del ítem padre relativo */
+    .main-nav .flyout-parent,
+    .main-nav .dropdown-submenu {
+        position: relative !important;
+    }
+
+    /* NIVEL 3: Submenú flotante hacia la derecha */
+    .main-nav .flyout-menu,
+    .main-nav .submenu-lateral {
+        display: none !important;
+        position: absolute !important; /* Fuera del flujo para no empujar nada hacia abajo */
+        top: -8px !important;          /* Alineado exactamente con la categoría padre */
+        left: 100% !important;         /* Despliegue lateral hacia la derecha */
+        min-width: 220px !important;
+        background-color: #212529 !important; /* Fondo oscuro consistente */
+        padding: 0.5rem 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        border-radius: 4px !important;
+        border-left: 8px solid transparent !important; /* Puente invisible lateral para el cursor */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4) !important;
+        z-index: 9999 !important;
+    }
+
+    /* Mostrar submenú lateral al posar el mouse sobre el elemento padre */
+    .main-nav .flyout-parent:hover > .flyout-menu,
+    .main-nav .dropdown-submenu:hover > .submenu-lateral,
+    .main-nav .dropdown-submenu:hover > .flyout-menu {
+        display: block !important;
+        animation: entradaSubmenu 0.2s ease-out;
     }
 }
 
-/* Animación sutil de caída del submenú */
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA SUAVES
+   ========================================================================== */
 @keyframes entradaDropdown {
     from {
         opacity: 0;
@@ -39,21 +70,64 @@
     }
 }
 
-/* 2. ESTILOS INTERNOS DE LAS OPCIONES DEL DROPDOWN */
-.main-nav .dropdown-menu .dropdown-item {
+@keyframes entradaSubmenu {
+    from {
+        opacity: 0;
+        transform: translateX(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   ESTILOS INTERNOS DE ENLACES Y COLORES
+   ========================================================================== */
+
+/* Reseteo general de los links en ambos niveles de menú */
+.main-nav .dropdown-menu .dropdown-item,
+.main-nav .flyout-menu a,
+.main-nav .submenu-lateral a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.6rem 1.25rem;
+    color: #ffffff !important;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Color rojo corporativo al hacer hover en cualquier opción */
 .main-nav .dropdown-menu .dropdown-item:hover,
-.main-nav .dropdown-menu .dropdown-item:focus {
-    background-color: #dc3545 !important; /* Pinta la opción seleccionada de rojo */
+.main-nav .dropdown-menu .dropdown-item:focus,
+.main-nav .flyout-menu a:hover,
+.main-nav .submenu-lateral a:hover {
+    background-color: #ff0000 !important;
     color: #ffffff !important;
 }
 
-/* 3. LIMPIEZA EL FONDO BLANCO GENÉRICO DE BOOTSTRAP */
+/* Mantiene encendido en rojo el elemento padre mientras recorres el submenú lateral */
+.main-nav .flyout-parent:hover > a,
+.main-nav .dropdown-submenu:hover > a {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+}
+
+/* Flechita indicadora en blanco durante el hover */
+.main-nav .flyout-parent:hover > a span,
+.main-nav .dropdown-submenu:hover > a span {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   LIMPIEZA DE FOCO Y FONDOS BLANCOS DE BOOTSTRAP
+   ========================================================================== */
 .main-nav .nav-item.dropdown .nav-link:focus,
 .main-nav .nav-item.dropdown .nav-link.show,
 .main-nav .nav-item.dropdown:hover .nav-link {
-    background-color: transparent !important; /* Mantiene el fondo oscuro de la barra */
-    color: #dc3545 !important;                /* Pinta la palabra activa de tu color rojo */
+    background-color: transparent !important; /* Mantiene la barra transparente/oscura */
+    color: #ff0000 !important;                /* Destaca la palabra activa en rojo */
 }
